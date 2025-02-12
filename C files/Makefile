@@ -1,7 +1,7 @@
 # Compiler
 CC = clang
 CFLAGS = -Wall -Wextra -g
-SHELL := cmd.exe
+# SHELL := cmd.exe - only for windows
 
 # Source files
 SRC = test.c
@@ -24,7 +24,8 @@ $(TARGET): $(OBJ)
 # Clean compiled files
 # Below is for Windows PWSH because PWSH sucks
 clean:
-	del -rf $(OBJ) $(TARGET).exe
+	rm -f $(OBJ) $(TARGET)
+# windows: del -rf $(OBJ) $(TARGET).exe
 
 # Rebuild from scratch
 rebuild: clean all
