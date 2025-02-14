@@ -1,8 +1,6 @@
 package main
 
-import (
-	cf "customfunctions"
-)
+import (cf"gofiles/custom-functions")
 
 func main() {
 	cf.Hello()

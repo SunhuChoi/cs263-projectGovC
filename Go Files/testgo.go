@@ -1,7 +1,7 @@
 package main
 
 import (
-    "customfunctions"
+     cf "gofiles/custom-functions"
     "math/rand"
     "time"
     "fmt"
@@ -12,7 +12,7 @@ const (
     COLVAL = 10
 )
 
-var log = customfunctions.InitLogger()
+var log = cf.InitLogger()
 
 func binarySearch(arr []int, l int, r int, x int) int {
     for l <= r {
@@ -62,7 +62,7 @@ func testBasicArraySearch() {
 
     start2 := time.Now()
     for i:= 0; i < ROWVAL; i++ {
-        customfunctions.QuickSort(arr[i], 0, COLVAL-1)
+        cf.QuickSort(arr[i], 0, COLVAL-1)
         res := binarySearch(arr[i], 0, COLVAL-1, rand.Intn(10))
         if res != -1 {
             fmt.Print("found the target number at index ", res, "\n")
@@ -85,4 +85,5 @@ func testBasicArraySearch() {
 
 func main() {
     testBasicArraySearch()
+    ohayo()
 }
