@@ -1,0 +1,2 @@
+INFO: 2025/02/13 14:58:10 testgo.go:61: Generating Array Runtime:  56µs
+INFO: 2025/02/13 14:58:10 testgo.go:74: Binary Search and Quicksort Runtime:  42.791µs
