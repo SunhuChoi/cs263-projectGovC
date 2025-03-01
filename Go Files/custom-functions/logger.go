@@ -2,6 +2,7 @@ package customfunctions
 
 import (
 	"fmt"
+	"io"
 	"log"
 	"os"
 	"time"
@@ -18,7 +19,8 @@ func InitLogger() *log.Logger {
         log.Fatal(err)
     }
 
+    terminalAndLog := io.MultiWriter(logFile, os.Stdout)
     // Set up the logger
-    var logger *log.Logger = log.New(logFile, "INFO: ", log.Ldate|log.Ltime|log.Lshortfile)
+    var logger *log.Logger = log.New(terminalAndLog, "INFO: ", log.Ldate|log.Ltime|log.Lshortfile)
     return logger
 }
