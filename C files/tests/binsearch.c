@@ -6,7 +6,8 @@
 #define ROWVAL 10
 #define COLVAL 10
 
-// creating a 2d array, sorting each row and binary searching through each to find a random given number 
+// creating 2d array, sorting each row using quicksort, binary searching through each row for a random number 
+
 
 int binarySearch(int arr[], int l, int r, int x) {
     while (r >= l) {
