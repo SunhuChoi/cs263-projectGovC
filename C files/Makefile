@@ -1,31 +1,23 @@
 # Compiler
 CC = clang
 CFLAGS = -Wall -Wextra -g
-# SHELL := cmd.exe - only for windows
 
-# Source files
-SRC = test.c
-OBJ = $(SRC:.c=.o)
+# Sorting files (inside sorting/)
+SORTING_DIR = sorting
+SORTING_SRC = $(wildcard $(SORTING_DIR)/*.c)
+SORTING_OBJ = $(SORTING_SRC:.c=.o)
+SORTING_EXECS = $(SORTING_SRC:.c=)
 
-# Output executable
-TARGET = test
+# Default rule: Compile all sorting algorithms
+all: $(SORTING_EXECS)
 
-# Default rule
-all: $(TARGET)
-
-# Linking
-$(TARGET): $(OBJ)
-	$(CC) $(OBJ) -o $(TARGET)
-
-# Compiling source files to object files
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+# Compile each sorting algorithm into an executable
+$(SORTING_DIR)/%: $(SORTING_DIR)/%.c
+	$(CC) $(CFLAGS) $< -o $@
 
 # Clean compiled files
-# Below is for Windows PWSH because PWSH sucks
 clean:
-	rm -f $(OBJ) $(TARGET)
-# windows: del -rf $(OBJ) $(TARGET).exe
+	rm -f $(SORTING_EXECS)
 
-# Rebuild from scratch
+# Rebuild everything
 rebuild: clean all
