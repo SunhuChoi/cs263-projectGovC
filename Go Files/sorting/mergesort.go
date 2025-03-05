@@ -1,7 +1,9 @@
 package main
 
 import (
-	"fmt" // for printing 
+	"fmt"
+	"math/rand"
+	"time"
 )
 
 func Mergesort(arr []int) []int {
@@ -41,10 +43,30 @@ func merge(left []int, right []int) []int {
 	return res
 }
 
-func main() {
-	arr := []int{49, 57, 60, 3, 22, 12, 10, 3, 5}
-	fmt.Println("Unsorted array:", arr)
+func generateRandomArray(size int, maxVal int) []int {
 
+	rand.Seed(time.Now().UnixNano()) // Seed 
+    
+	arr := make([]int, size)
+
+	for i := 0; i < size; i++ {
+		arr[i] = rand.Intn(maxVal)
+	}
+
+	return arr
+}
+
+
+func main() {
+	size := 100000       
+	maxVal := 100     
+	arr := generateRandomArray(size, maxVal)
+
+	start := time.Now()
 	sortedArr := Mergesort(arr)
-	fmt.Println("Sorted array:", sortedArr)
+	end := time.Now()
+
+	fmt.Println(sortedArr)
+
+	fmt.Println("Merge Sort: ", end.Sub(start))
 }
