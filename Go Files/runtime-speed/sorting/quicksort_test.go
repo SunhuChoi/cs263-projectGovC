@@ -1,9 +1,7 @@
 package main
 
 import (
-	"fmt"
-	"math/rand"
-	"time"
+	"testing"
 )
 
 func Swap(arr []int, start int, end int) {
@@ -34,28 +32,11 @@ func QuickSort(arr []int, start int, end int) {
 	}
 }
 
-func generateRandomArray(size int, maxVal int) []int {
-	rand.Seed(time.Now().UnixNano()) // Seed random number generator
-	arr := make([]int, size)
-
-	for i := 0; i < size; i++ {
-		arr[i] = rand.Intn(maxVal) 
-	}
-
-	return arr
-}
-
-func main() {
-	size := 100000  
-	maxVal := 100
-	arr := generateRandomArray(size, maxVal)
-
-	fmt.Println("Unsorted array:", arr)
-
-	start := time.Now()
-	QuickSort(arr, 0, len(arr)-1) // Corrected function call
-	end := time.Now()
-
-	fmt.Println("Sorted array:  ", arr)
-	fmt.Println("QuickSort Time:", end.Sub(start))
+func BenchmarkArraySearchQuick(b *testing.B) {
+	size := 10       
+	maxVal := 100 
+    for i := 0; i < b.N; i++ {
+		arr := generateRandomArray(size, maxVal)
+		QuickSort(arr, 0, len(arr)-1)
+    }
 }

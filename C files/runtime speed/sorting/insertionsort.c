@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "../timer.h"
 
-
-void insertionSort(int arr[], int n) {
+void insertionSort(int* arr, int n) {
     for (int i = 1; i < n; i++) {
         int key = arr[i];
         int j = i - 1;
@@ -18,43 +18,40 @@ void insertionSort(int arr[], int n) {
 }
 
 
-void generateRandomArray(int arr[], int n, int maxVal) {
+void generateRandomArray(int* arr, int n, int maxVal) {
     for (int i = 0; i < n; i++) {
         arr[i] = rand() % maxVal; // Random number between 0 and maxVal-1
     }
 }
 
-
-void printArray(int arr[], int n) {
-    for (int i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-}
-
 int main() {
-    int n = 100000;   
-    int maxVal = 1000; 
+    double timeTaken = 0;
+    double start, end;
+    int n;
+    scanf("%d", &n);
+    for(int i = 0; i < 10; i++) {  
+        int maxVal = 1000; 
 
-    int *arr = (int *)malloc(n * sizeof(int)); 
-    if (arr == NULL) {
+        int *arr = (int *)malloc(n * sizeof(int)); 
+        if (arr == NULL) {
 
-        printf("malloc failed\n");
-        return 1;
+            printf("malloc failed\n");
+            return 1;
+        }
+
+        srand(time(NULL)); // Seed 
+        generateRandomArray(arr, n, maxVal);
+
+
+        start = get_time();
+        insertionSort(arr, n);
+        free(arr); 
+        end = get_time();
+
+
+        timeTaken += end-start;
+        printf("Time %.16f\n", end-start);
     }
-
-    srand(time(NULL)); // Seed 
-    generateRandomArray(arr, n, maxVal);
-
-
-    clock_t start = clock(); 
-    insertionSort(arr, n);
-    clock_t end = clock();  
-
-
-    double timeTaken = ((double)(end - start)) / CLOCKS_PER_SEC; 
-    printf("Insertion Sort Time: %f seconds\n", timeTaken);
-
-    free(arr); 
+    printf("Average total time taken: %.16f seconds", timeTaken / 10);
     return 0;
 }

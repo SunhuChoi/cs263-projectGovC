@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <time.h>
 #include <stdbool.h>
 
 #define ROWVAL 10
 #define COLVAL 10
-
-// creating 2d array, sorting each row using quicksort, binary searching through each row for a random number 
 
 
 int binarySearch(int arr[], int l, int r, int x) {
@@ -92,13 +91,17 @@ void free2DArray(int **arr) {
 
 void testBasicArraySearch() {
     clock_t start, end;
-
+    uint64_t start1, end1;
     // Generating 2D array of 
+    start1 = rdtsc();
     start = clock();
     int **arr = create2DArray(ROWVAL, COLVAL);
     end = clock();
-    printf("Generating Array Runtime: %f\n", (double)(end - start) / CLOCKS_PER_SEC);
+    end1 = rdtsc();
 
+    printf("Generating Array Runtime: %f\n", (double)(end - start) / CLOCKS_PER_SEC);
+    printf("Array allocation and initialization took %llu CPU cycles\n", end1 - start1);
+    start1 = rdtsc();
     start = clock();
     for(int i = 0; i < ROWVAL; i++) { // performing binary search on each row of the array.. so each row of the array needs to be sorted 
         quicksort(arr[i], 0, COLVAL-1);
@@ -112,8 +115,9 @@ void testBasicArraySearch() {
         
     }
     end = clock();
+    end1 = rdtsc();
     printf("Binary Search Runtime: %f\n", (double)(end - start) / CLOCKS_PER_SEC);
-
+    printf("Array allocation and initialization took %llu CPU cycles\n", end1 - start1);
     // for (int i = 0; i < ROWVAL; i++) { 
     //     for (int j = 0; j < COLVAL; j++) {
     //         printf("%d ", arr[i][j]);  // Print each element with space

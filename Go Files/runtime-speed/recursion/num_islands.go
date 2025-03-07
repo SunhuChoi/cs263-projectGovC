@@ -1,3 +1,4 @@
+package main
 
 func NumOneBlocks(graph [][]int) int{
 	rows := len(graph)

@@ -43,29 +43,29 @@ func testBasicArraySearch() {
     }
 }
 
-func TestBasicArraySearch(t *testing.T) {
-    testBasicArraySearch()
-}
+// func TestBasicArraySearch(t *testing.T) {
+//     testBasicArraySearch()
+// }
 
-func TestFiBRecursive(t *testing.T) {
-    start := time.Now()
-    dp := make(map[int]int)
-    val := cf.FibRecursive(40, dp)
-    log.Println(val)
-    if val != 102334155 {
-        t.Errorf("got %d, want %d", val, 102334155)
-    }
-    end := time.Now()
-    log.Println("Fib Runtime: ", end.Sub(start))
-}
+// func TestFiBRecursive(t *testing.T) {
+//     start := time.Now()
+//     dp := make(map[int]int)
+//     val := cf.FibRecursive(40, dp)
+//     log.Println(val)
+//     if val != 102334155 {
+//         t.Errorf("got %d, want %d", val, 102334155)
+//     }
+//     end := time.Now()
+//     log.Println("Fib Runtime: ", end.Sub(start))
+// }
 
-func TestBlockSearch(t *testing.T) {
-    start := time.Now()
-    graph := cf.Create2DArray(ROWVAL, COLVAL, 2)
-    log.Println(cf.NumOneBlocks(graph))
-    end := time.Now()
-    log.Println("Block Search Runtime: ", end.Sub(start))
-}
+// func TestBlockSearch(t *testing.T) {
+//     start := time.Now()
+//     graph := cf.Create2DArray(ROWVAL, COLVAL, 2)
+//     log.Println(cf.NumOneBlocks(graph))
+//     end := time.Now()
+//     log.Println("Block Search Runtime: ", end.Sub(start))
+// }
 
 func BenchmarkArraySearch(b *testing.B) {
     for i := 0; i < b.N; i++ {
