@@ -1,12 +1,14 @@
-package main
+package main 
 
 import (
 	"runtime"
 	"time"
-	cf "gofiles/custom-functions"
+	cf "gofiles/custom-functions" 
 )
 
+var startTime = time.Now()
 var log = cf.InitLogger()
+
 
 func allocateMemory(data [][]byte) {
 	const numArrays = 500000 // million arrays 
@@ -20,7 +22,8 @@ func allocateMemory(data [][]byte) {
 			data[i][0] = byte(i % 256)
 		}
 	}
-}
+} 
+ 
 
 func allocateMemory2(data2 [][]byte) {
 	const numArrays = 1000000 // million arrays 
@@ -36,16 +39,20 @@ func allocateMemory2(data2 [][]byte) {
 	}
 } 
 
-func printMemStats(phase string) { 
+
+func printMemStats(phase string) {
 	var m runtime.MemStats
 	runtime.ReadMemStats(&m)
 
-	// memory statistics in MB
-	log.Printf("%s - Heap: %v MB, Alloc: %v MB, GC Cycles: %v\n", phase, m.HeapAlloc/1024/1024, m.Alloc/1024/1024, m.NumGC)
+	elapsed := time.Since(startTime).Seconds()
+
+	log.Printf("[%.3f s] %s - Alloc: %v MB, GC Cycles: %v\n",
+		elapsed, phase, m.Alloc/1024/1024, m.NumGC)
 }
 
+
 func startMemStatsPrinter() {
-	// Goroutine to print memory stats every 500ms
+	// Goroutine to print memory stats every 20ms
 	go func() {
 		for {
 			printMemStats("Background Stats")
@@ -53,6 +60,7 @@ func startMemStatsPrinter() {
 		}
 	}()
 }
+
 
 func main() {
 	startMemStatsPrinter()
@@ -64,6 +72,5 @@ func main() {
 	data2 := make([][]byte, 2000000)
 	allocateMemory2(data2)
 	data2 = nil // Dereference 
-
-	// Sleep to allow the goroutine to run and print stats 
 } 
+
