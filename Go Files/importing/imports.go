@@ -1,5 +1,7 @@
 package main
 
+// copy of server file
+
 import (
 	"fmt"
 	cf "gofiles/custom-functions"
