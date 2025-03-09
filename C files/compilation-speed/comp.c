@@ -2,13 +2,13 @@
 
 int main() {
 
-    long long result = 0;
+    long long res = 0;
 
     for (long long i = 0; i < 100000000; i++) {
-        result += i;
+        res += i;
     }
 
-    printf("Sum: %lld\n", result);
+    printf("Sum: %lld\n", res);
 
-    return 234394;
+    return 0;
 }

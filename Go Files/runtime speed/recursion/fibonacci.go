@@ -1,5 +1,6 @@
 
 func FibIterative(n int) int {
+
     if n <= 1 {
         return n
     }
@@ -14,7 +15,8 @@ func FibIterative(n int) int {
 }
 
 
-func FibRecursive(n int, dp map[int]int) int{
+func FibRecursive(n int, mp map[int]int) int{
+	
 	if n == 0 {
 		return 0
 	}
@@ -23,9 +25,9 @@ func FibRecursive(n int, dp map[int]int) int{
 		return 1
 	}
 
-	if val, exists := dp[n]; exists {
+	if val, exists := mp[n]; exists {
 		return val
 	}
 
-	return FibRecursive(n-2, dp) + FibRecursive(n-1, dp)
+	return FibRecursive(n-2, mp) + FibRecursive(n-1, mp)
 }

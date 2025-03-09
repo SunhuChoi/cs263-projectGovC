@@ -7,6 +7,7 @@ import (
 )
 
 func BubbleSort(arr []int) {
+
     leng := len(arr)
 
     for i := 0; i < leng-1; i++ {
@@ -22,7 +23,7 @@ func BubbleSort(arr []int) {
 
 func generateRandomArray(size int, maxVal int) []int {
 
-	rand.Seed(time.Now().UnixNano()) // Seed 
+	rand.Seed(time.Now().UnixNano()) // seed 
     
 	arr := make([]int, size)
 
@@ -37,10 +38,14 @@ func generateRandomArray(size int, maxVal int) []int {
 func main() {
 	size := 100000       
 	maxVal := 100     
+
+
 	arr := generateRandomArray(size, maxVal)
 
 	start := time.Now()
+
 	BubbleSort(arr)
+
     end := time.Now()
 
     fmt.Println("Insertion Sort: ", end.Sub(start))

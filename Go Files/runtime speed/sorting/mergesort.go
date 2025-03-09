@@ -11,7 +11,7 @@ func Mergesort(arr []int) []int {
 		return arr // base case 
 	}
 
-	mid := len(arr) /2 
+	mid := len(arr) / 2 
 	left := arr[:mid]
 	right := arr[mid:]
 
@@ -28,10 +28,13 @@ func merge(left []int, right []int) []int {
 	r := 0
 
 	for l < len(left) && r < len(right) {
+		
 		if left[l] < right[r] {
 			res = append(res, left[l])
 			l++
-		} else {
+		} 
+		
+		else {
 			res = append(res, right[r])
 			r++
 		}
@@ -42,6 +45,7 @@ func merge(left []int, right []int) []int {
 
 	return res
 }
+
 
 func generateRandomArray(size int, maxVal int) []int {
 
@@ -58,15 +62,18 @@ func generateRandomArray(size int, maxVal int) []int {
 
 
 func main() {
+
 	size := 100000       
 	maxVal := 100     
+
 	arr := generateRandomArray(size, maxVal)
 
 	start := time.Now()
+
 	sortedArr := Mergesort(arr)
+
 	end := time.Now()
 
 	fmt.Println(sortedArr)
-
 	fmt.Println("Merge Sort: ", end.Sub(start))
 }

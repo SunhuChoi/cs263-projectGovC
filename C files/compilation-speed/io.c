@@ -10,5 +10,5 @@ int main() {
 
     fclose(file);
 
-    return 348333;
+    return 0;
 }

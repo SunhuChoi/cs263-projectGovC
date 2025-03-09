@@ -5,9 +5,9 @@ import (
     "os"
 )
 
-func main() {
+func main() { 
 
-    file, err := os.Create("test1.txt")
+    file, err := os.Create("test1.txt") 
 
     defer file.Close()
 
