@@ -313,7 +313,7 @@ export default function Home() {
               <Card>
                 <CardHeader>
                   <CardTitle className="text-center font-bold">
-                    Stack Allocator
+                    Stack Allocator Module
                   </CardTitle>
                   <CardDescription className="text-center">
                     Add or remove from stack?
@@ -337,7 +337,7 @@ export default function Home() {
               <Card>
                 <CardHeader>
                   <CardTitle className="text-center font-bold">
-                    Heap Allocator
+                    Heap Allocator Module
                   </CardTitle>
                   <CardDescription className="text-center">
                     Add or remove from heap?
@@ -559,16 +559,30 @@ export default function Home() {
                 ? "We're going to deallocate from stack so you don't accidentally blow up the server"
                 : "You need to lower the number of GoRoutines you have before you continue"}
             </p>
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center space-x-4">
               {stackCount ? (
                 <></>
               ) : (
-                <Button
-                  onClick={noButtonClicked}
-                  className="bg-red-100 text-red-800"
-                >
-                  Lower
-                </Button>
+                <>
+                  <Button
+                    onClick={noButtonClicked}
+                    className="bg-red-100 text-red-800 gap-2"
+                  >
+                    Lower Basic Go Routines
+                  </Button>
+                  <Button
+                    onClick={stackRemoveButtonClicked}
+                    className="bg-red-100 text-red-800 gap-2"
+                  >
+                    Lower Stack Go Routines
+                  </Button>
+                  <Button
+                    onClick={heapRemoveButtonClicked}
+                    className="bg-red-100 text-red-800 gap-2"
+                  >
+                    Lower Heap Go Routines
+                  </Button>
+                </>
               )}
             </div>
           </DialogPanel>
