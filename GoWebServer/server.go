@@ -142,6 +142,7 @@ func handleWebSocket(w http.ResponseWriter, r *http.Request) {
 
 			flag := make(chan bool)
 			stackchans = append(stackchans, flag)
+			//fmt.Println("Number of stackchans in add: ", len(stackchans))
 			go stackAllocator(1, flag)
 		} else if string(m) == "Stack Remove" {
 			if len(stackchans) != 0 {
@@ -156,9 +157,11 @@ func handleWebSocket(w http.ResponseWriter, r *http.Request) {
 			conn.WriteMessage(websocket.TextMessage, []byte("Nice!"))
 
 			flag := make(chan bool)
-			heapchans = append(stackchans, flag)
+			heapchans = append(heapchans, flag)
+			fmt.Println("Number of Heapchans in add: ", len(heapchans))
 			go heapAllocator(flag)
 		} else if string(m) == "Heap Remove" {
+			//fmt.Println("Number of Heapchans in remove: ", len(heapchans))
 			if len(heapchans) != 0 {
 				heapchans[len(heapchans)-1]<-true
 				heapchans = heapchans[:len(heapchans)-1]
