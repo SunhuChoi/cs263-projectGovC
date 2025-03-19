@@ -8,7 +8,7 @@
 https://docs.google.com/document/d/1F_ny6PRYJya3hDUXRv73d4O9bccZJnMd89J7JwcBGDo/edit?usp=sharing
 
 ## Project Notes: 
-- https://docs.google.com/document/d/1Hq9C0rBVcCdx30qyi7RJSmlMp9FwIhzgGhFGFXvW0-8/edit?usp=sharing
+https://docs.google.com/document/d/1Hq9C0rBVcCdx30qyi7RJSmlMp9FwIhzgGhFGFXvW0-8/edit?usp=sharing
 
 
 ## Installation Steps: 
