@@ -24,5 +24,5 @@ Once downloaded, open up two terminals. In both, CD into the GoWebServer directo
 In the other terminal, run the command "go run server.go". This should find the server.go file under the GoWebServer directory. If you are on windows, you will most likely be prompted with something like this:
 ![image](https://github.com/user-attachments/assets/7b5fd56d-ce61-4395-97f7-2424f7360fc7)
 
-Click Allow. Your server should now be running and listening in on Port 8080 for a Websocket connection. 
+Click Allow. Your server should now be running and listening in on Port 8080 for a Websocket connection. Then, open up the localhost website shown in your other terminal running "npm run dev" and get started!
 
