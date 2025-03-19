@@ -26,5 +26,10 @@ In the other terminal, run the command "go run server.go". This should find the 
 
 ![image](https://github.com/user-attachments/assets/7b5fd56d-ce61-4395-97f7-2424f7360fc7)
 
+If you are on Mac, you will most likely be prompted with something like this:
+
+![image](https://github.com/user-attachments/assets/80e8fa4b-9a21-4716-8ad4-415a92248b73)
+
+
 Click Allow. Your server should now be running and listening in on Port 8080 for a Websocket connection. Then, open up the localhost website shown in your other terminal running "npm run dev" and get started!
 
